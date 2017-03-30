@@ -6,7 +6,7 @@
     <result column="Name" jdbcType="NVARCHAR" property="name" />
     <result column="Address" jdbcType="NVARCHAR" property="address" />
   </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer"> 
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from Test_User
     where id = #{id,jdbcType=INTEGER}
   </delete>

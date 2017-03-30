@@ -1,36 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.hzj.dao.AdminRoleMapper">
-  <resultMap id="BaseResultMap" type="com.hzj.pojo.AdminRole">
-    <id column="RoleID" jdbcType="INTEGER" property="roleid" />
-    <result column="RoleName" jdbcType="NVARCHAR" property="rolename" />
-    <result column="CreateTime" jdbcType="DATE" property="createtime" />
-  </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from Admin_Role
-    where RoleID = #{roleid,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.hzj.pojo.AdminRole">
-    insert into Admin_Role (RoleID, RoleName, CreateTime
-      )
-    values (#{roleid,jdbcType=INTEGER}, #{rolename,jdbcType=NVARCHAR}, #{createtime,jdbcType=DATE}
-      )
-  </insert>
-  <update id="updateByPrimaryKey" parameterType="com.hzj.pojo.AdminRole">
-    update Admin_Role
-    set RoleName = #{rolename,jdbcType=NVARCHAR},
-      CreateTime = #{createtime,jdbcType=DATE}
-    where RoleID = #{roleid,jdbcType=INTEGER}
-  </update>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select RoleID, RoleName, CreateTime
-    from Admin_Role
-    where RoleID = #{roleid,jdbcType=INTEGER}
-  </select>
-  <select id="selectAll" resultMap="BaseResultMap">
-    select RoleID, RoleName, CreateTime
-    from Admin_Role
-  </select>
+<mapper namespace="com.hzj.dao.AdminRoleDao">
   <resultMap id="BaseResultMap" type="com.hzj.pojo.AdminRole">
     <id column="RoleID" jdbcType="INTEGER" property="roleid" />
     <result column="RoleName" jdbcType="NVARCHAR" property="rolename" />

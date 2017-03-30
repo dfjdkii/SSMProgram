@@ -48,7 +48,7 @@
                                      
                                      <div class="Custom-LoginButton">登录</div>
                                     <hr />
-                                    <div class="Custom-EdgeDiv">没有帐号 ? <a href="Test.jsp" >注册 </a></div>                            
+                                    <div class="Custom-EdgeDiv">没有帐号 ? <a href="jsp/Test.jsp" >注册 </a></div>                            
                                                                 
                                     </form>
                             </div>

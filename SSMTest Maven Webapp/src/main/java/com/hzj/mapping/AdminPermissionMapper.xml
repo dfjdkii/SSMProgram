@@ -1,36 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.hzj.dao.AdminPermissionMapper">
-  <resultMap id="BaseResultMap" type="com.hzj.pojo.AdminPermission">
-    <id column="PermissionID" jdbcType="INTEGER" property="permissionid" />
-    <result column="PermissionName" jdbcType="NVARCHAR" property="permissionname" />
-    <result column="CreateTime" jdbcType="DATE" property="createtime" />
-  </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from Admin_Permission
-    where PermissionID = #{permissionid,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.hzj.pojo.AdminPermission">
-    insert into Admin_Permission (PermissionID, PermissionName, CreateTime
-      )
-    values (#{permissionid,jdbcType=INTEGER}, #{permissionname,jdbcType=NVARCHAR}, #{createtime,jdbcType=DATE}
-      )
-  </insert>
-  <update id="updateByPrimaryKey" parameterType="com.hzj.pojo.AdminPermission">
-    update Admin_Permission
-    set PermissionName = #{permissionname,jdbcType=NVARCHAR},
-      CreateTime = #{createtime,jdbcType=DATE}
-    where PermissionID = #{permissionid,jdbcType=INTEGER}
-  </update>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select PermissionID, PermissionName, CreateTime
-    from Admin_Permission
-    where PermissionID = #{permissionid,jdbcType=INTEGER}
-  </select>
-  <select id="selectAll" resultMap="BaseResultMap">
-    select PermissionID, PermissionName, CreateTime
-    from Admin_Permission
-  </select>
+<mapper namespace="com.hzj.dao.AdminPermissionDao">
   <resultMap id="BaseResultMap" type="com.hzj.pojo.AdminPermission">
     <id column="PermissionID" jdbcType="INTEGER" property="permissionid" />
     <result column="PermissionName" jdbcType="NVARCHAR" property="permissionname" />

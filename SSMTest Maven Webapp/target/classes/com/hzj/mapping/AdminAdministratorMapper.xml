@@ -1,44 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.hzj.dao.AdminAdministratorMapper">
-  <resultMap id="BaseResultMap" type="com.hzj.pojo.AdminAdministrator">
-    <id column="AdminID" jdbcType="INTEGER" property="adminid" />
-    <result column="RoleID" jdbcType="INTEGER" property="roleid" />
-    <result column="AdminAccount" jdbcType="NVARCHAR" property="adminaccount" />
-    <result column="AdminPassword" jdbcType="NVARCHAR" property="adminpassword" />
-    <result column="AdminPasswordSalt" jdbcType="NVARCHAR" property="adminpasswordsalt" />
-    <result column="CreateTime" jdbcType="DATE" property="createtime" />
-  </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from Admin_Administrator
-    where AdminID = #{adminid,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.hzj.pojo.AdminAdministrator">
-    insert into Admin_Administrator (AdminID, RoleID, AdminAccount, 
-      AdminPassword, AdminPasswordSalt, CreateTime
-      )
-    values (#{adminid,jdbcType=INTEGER}, #{roleid,jdbcType=INTEGER}, #{adminaccount,jdbcType=NVARCHAR}, 
-      #{adminpassword,jdbcType=NVARCHAR}, #{adminpasswordsalt,jdbcType=NVARCHAR}, #{createtime,jdbcType=DATE}
-      )
-  </insert>
-  <update id="updateByPrimaryKey" parameterType="com.hzj.pojo.AdminAdministrator">
-    update Admin_Administrator
-    set RoleID = #{roleid,jdbcType=INTEGER},
-      AdminAccount = #{adminaccount,jdbcType=NVARCHAR},
-      AdminPassword = #{adminpassword,jdbcType=NVARCHAR},
-      AdminPasswordSalt = #{adminpasswordsalt,jdbcType=NVARCHAR},
-      CreateTime = #{createtime,jdbcType=DATE}
-    where AdminID = #{adminid,jdbcType=INTEGER}
-  </update>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select AdminID, RoleID, AdminAccount, AdminPassword, AdminPasswordSalt, CreateTime
-    from Admin_Administrator
-    where AdminID = #{adminid,jdbcType=INTEGER}
-  </select>
-  <select id="selectAll" resultMap="BaseResultMap">
-    select AdminID, RoleID, AdminAccount, AdminPassword, AdminPasswordSalt, CreateTime
-    from Admin_Administrator
-  </select>
+<mapper namespace="com.hzj.dao.AdminAdministratorDao">
   <resultMap id="BaseResultMap" type="com.hzj.pojo.AdminAdministrator">
     <id column="AdminID" jdbcType="INTEGER" property="adminid" />
     <result column="RoleID" jdbcType="INTEGER" property="roleid" />

@@ -1,0 +1,18 @@
+@CHARSET "UTF-8";
+.Custom-HeadFont{
+	font-family: fantasy;
+    color: #0656b9;
+}
+.Custom-EdgeDiv{
+	margin: 0 0 0 68%;
+}
+.Custom-LoginButton{
+	color: #fff;
+    background-color: #428bca;
+    border-color: #357ebd;
+    font-size: 200%;
+    padding: 3% 40% 3% 41%;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    display: inline-block;
+}

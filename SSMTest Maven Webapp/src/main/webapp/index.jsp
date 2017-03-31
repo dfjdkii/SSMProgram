@@ -9,7 +9,7 @@
     <link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-    <link href="css/index.css" rel="stylesheet" />
+    <link href="css/index.css" rel="stylesheet" type="text/css"/>
     
 
 </head>
@@ -46,10 +46,13 @@
                                             </span>
                                         </div>
                                      
-                                     <div class="Custom-LoginButton">登录</div>
+                                     <div>
+                                         <input type="submit" class="Custom-LoginButton" value="登录"/>
+                                     </div>
                                     <hr />
                                     <div class="Custom-EdgeDiv">没有帐号 ? <a href="Test.jsp" >注册 </a></div>                            
-                                                                
+                                    <hr />
+                                    <a href="hzj/Test?id=1125">测试跳转</a>                            
                                     </form>
                             </div>
                            

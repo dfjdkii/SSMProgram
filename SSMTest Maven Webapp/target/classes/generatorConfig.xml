@@ -52,11 +52,11 @@
                 selectByExampleQueryId="false">  
               <property name="useActualColumnNames" value="false" /> 
             </table>
-            <!-- <table tableName="Admin_%"
+            <table tableName="Admin_%"
                 enableCountByExample="false" enableUpdateByExample="false"  
                 enableDeleteByExample="false" enableSelectByExample="false"  
                 selectByExampleQueryId="false">  
               <property name="useActualColumnNames" value="false" /> 
-            </table>   -->
+            </table>  
         </context>  
     </generatorConfiguration>      

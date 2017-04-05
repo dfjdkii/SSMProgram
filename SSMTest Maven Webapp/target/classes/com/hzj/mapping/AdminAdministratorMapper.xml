@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.hzj.dao.AdminAdministratorDao">
+<mapper namespace="com.hzj.dao.AdminAdministratorMapper">
   <resultMap id="BaseResultMap" type="com.hzj.pojo.AdminAdministrator">
     <id column="AdminID" jdbcType="INTEGER" property="adminid" />
     <result column="RoleID" jdbcType="INTEGER" property="roleid" />
     <result column="AdminAccount" jdbcType="NVARCHAR" property="adminaccount" />
     <result column="AdminPassword" jdbcType="NVARCHAR" property="adminpassword" />
     <result column="AdminPasswordSalt" jdbcType="NVARCHAR" property="adminpasswordsalt" />
-    <result column="CreateTime" jdbcType="DATE" property="createtime" />
+    <result column="CreateTime" jdbcType="TIMESTAMP" property="createtime" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from Admin_Administrator
@@ -18,7 +18,7 @@
       AdminPassword, AdminPasswordSalt, CreateTime
       )
     values (#{adminid,jdbcType=INTEGER}, #{roleid,jdbcType=INTEGER}, #{adminaccount,jdbcType=NVARCHAR}, 
-      #{adminpassword,jdbcType=NVARCHAR}, #{adminpasswordsalt,jdbcType=NVARCHAR}, #{createtime,jdbcType=DATE}
+      #{adminpassword,jdbcType=NVARCHAR}, #{adminpasswordsalt,jdbcType=NVARCHAR}, #{createtime,jdbcType=TIMESTAMP}
       )
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.hzj.pojo.AdminAdministrator">
@@ -27,7 +27,7 @@
       AdminAccount = #{adminaccount,jdbcType=NVARCHAR},
       AdminPassword = #{adminpassword,jdbcType=NVARCHAR},
       AdminPasswordSalt = #{adminpasswordsalt,jdbcType=NVARCHAR},
-      CreateTime = #{createtime,jdbcType=DATE}
+      CreateTime = #{createtime,jdbcType=TIMESTAMP}
     where AdminID = #{adminid,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">

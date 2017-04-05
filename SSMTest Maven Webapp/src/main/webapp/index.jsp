@@ -52,7 +52,7 @@
                                     <hr />
                                     <div class="Custom-EdgeDiv">没有帐号 ? <a href="Test.jsp" >注册 </a></div>                            
                                     <hr />
-                                    <a href="hzj/Test?id=1125">测试跳转</a>                            
+                                    <a href="hzj/ShowNameByID?id=1125">展示名称</a><a href="hzj/ShowAllByUsingJson">展示所有信息</a>                            
                                     </form>
                             </div>
                            

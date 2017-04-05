@@ -3,13 +3,15 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<title>登录测试框</title>
+<title>登录</title>
 
 <!-- bootstrap外部样式表 先引用jquery的js再引用bootstrap的css避免效果无法显示-->
 <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 <link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
 	rel="stylesheet">
 <script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<!-- 服务器内部样式表 -->
 <link href="css/login.css" rel="stylesheet" type="text/css" />
 
 
@@ -18,7 +20,7 @@
 	<div class="container">
 		<div class="row text-center " style="padding-top:100px;">
 			<div class="col-md-12">
-				<h2 align="center" class="Custom-HeadFont">欢迎使用测试后台系统!</h2>
+				<h2 align="center" class="Login-HeadFont">欢迎使用测试后台系统!</h2>
 			</div>
 		</div>
 		<div class="row ">
@@ -46,11 +48,11 @@
 						</div>
 
 						<div>
-							<input type="submit" class="Custom-LoginButton" value="登录" />
+							<input type="submit" class="Login-LoginButton" value="登录" />
 						</div>
 						<hr />
-						<div class="Custom-EdgeDiv">
-							没有帐号 ? <a href="Regist.html">注册 </a>
+						<div class="Login-EdgeDiv">
+							没有帐号 ? <a href="regist.html">注册 </a>
 						</div>
 						<hr />
 						<a href="hzj/ShowNameByID?id=1125">展示名称</a><a

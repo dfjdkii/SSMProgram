@@ -1,12 +1,12 @@
 @CHARSET "UTF-8";
-.Custom-HeadFont{
+.Login-HeadFont{
 	font-family: fantasy;
     color: #0656b9;
 }
-.Custom-EdgeDiv{
+.Login-EdgeDiv{
 	margin: 0 0 0 68%;
 }
-.Custom-LoginButton{
+.Login-LoginButton{
 	color: #fff;
     background-color: #428bca;
     border-color: #357ebd;

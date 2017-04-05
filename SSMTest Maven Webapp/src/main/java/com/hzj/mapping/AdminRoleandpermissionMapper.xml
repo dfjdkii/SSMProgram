@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.hzj.dao.AdminRoleandpermissionDao">
+<mapper namespace="com.hzj.dao.AdminRoleandpermissionMapper">
   <resultMap id="BaseResultMap" type="com.hzj.pojo.AdminRoleandpermission">
     <id column="RoleID" jdbcType="INTEGER" property="roleid" />
     <id column="PermissionID" jdbcType="INTEGER" property="permissionid" />

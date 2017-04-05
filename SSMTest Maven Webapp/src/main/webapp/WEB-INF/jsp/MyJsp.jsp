@@ -13,6 +13,6 @@
       <c:if test="${list!=null}">展示所有测试用户信息：${list}</c:if></div>
   
       <br />
-      <div align="center"><a href="../index.jsp">返回首页</a></div>
+      <div align="center"><a href="../index.html">返回首页</a></div>
   </body>  
 </html>  

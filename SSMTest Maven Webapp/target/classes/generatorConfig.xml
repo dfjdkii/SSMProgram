@@ -3,6 +3,7 @@
     <generatorConfiguration>  
         <classPathEntry  
             location="D:\MavenRepository\com\microsoft\sqlserver\sqljdbc4\4.0\sqljdbc4-4.0.jar" />  
+            <!-- 这里选择MB3Simple为方便生成selectAll方法，缺点为无法生成可选择的select语句 -->
         <context id="context1" targetRuntime="MyBatis3Simple">  
             <!-- 生成的pojo，将implements Serializable -->  
             <plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>  
@@ -24,7 +25,6 @@
   
             <!-- 生成model模型，对应的包路径，以及文件存放路径(targetProject)，targetProject可以指定具体的路径,如./src/main/java，   
                 也可以使用“MAVEN”来自动生成，这样生成的代码会在target/generatord-source目录下 -->  
-            <!--<javaModelGenerator targetPackage="com.joey.mybaties.test.pojo" targetProject="MAVEN"> -->  
             <javaModelGenerator targetPackage="com.hzj.pojo"  
                 targetProject="src/main/java">  
                 <property name="enableSubPackages" value="true" />  

@@ -3,27 +3,37 @@
 <mapper namespace="com.hzj.dao.AdminAdministratorDao">
   <resultMap id="BaseResultMap" type="com.hzj.pojo.AdminAdministrator">
     <id column="AdminID" jdbcType="INTEGER" property="adminid" />
-    <result column="RoleID" jdbcType="INTEGER" property="roleid" />
     <result column="AdminAccount" jdbcType="NVARCHAR" property="adminaccount" />
     <result column="AdminPassword" jdbcType="NVARCHAR" property="adminpassword" />
     <result column="AdminPasswordSalt" jdbcType="NVARCHAR" property="adminpasswordsalt" />
     <result column="CreateTime" jdbcType="TIMESTAMP" property="createtime" />
+    
+    <association property="adminRole" javaType="com.hzj.pojo.AdminRole">
+      <id column="RoleID" jdbcType="INTEGER" property="roleid" />
+      <result column="RoleName" jdbcType="NVARCHAR" property="rolename" />
+      <result column="rCreateTime" jdbcType="TIMESTAMP" property="createtime" />
+    </association>
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from Admin_Administrator
     where AdminID = #{adminid,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.hzj.pojo.AdminAdministrator">
-    insert into Admin_Administrator (AdminID, RoleID, AdminAccount, 
-      AdminPassword, AdminPasswordSalt, CreateTime
-      )
-    values (#{adminid,jdbcType=INTEGER}, #{roleid,jdbcType=INTEGER}, #{adminaccount,jdbcType=NVARCHAR}, 
-      #{adminpassword,jdbcType=NVARCHAR}, #{adminpasswordsalt,jdbcType=NVARCHAR}, #{createtime,jdbcType=TIMESTAMP}
-      )
-  </insert>
+	<insert id="insert" parameterType="com.hzj.pojo.AdminAdministrator">
+	<selectKey keyProperty="adminid" resultType="int" order="BEFORE">
+	select max(AdminID)+1 from Admin_Administrator
+    </selectKey>
+	insert into Admin_Administrator (AdminID, RoleID, AdminAccount,
+	AdminPassword, AdminPasswordSalt, CreateTime
+	)
+	values (#{adminid,jdbcType=INTEGER}, #{adminRole.roleid,jdbcType=INTEGER},
+	#{adminaccount,jdbcType=NVARCHAR},
+	#{adminpassword,jdbcType=NVARCHAR}, #{adminpasswordsalt,jdbcType=NVARCHAR},
+	#{createtime,jdbcType=TIMESTAMP}
+	)
+	</insert>
   <update id="updateByPrimaryKey" parameterType="com.hzj.pojo.AdminAdministrator">
     update Admin_Administrator
-    set RoleID = #{roleid,jdbcType=INTEGER},
+    set RoleID = #{adminRole.roleid,jdbcType=INTEGER},
       AdminAccount = #{adminaccount,jdbcType=NVARCHAR},
       AdminPassword = #{adminpassword,jdbcType=NVARCHAR},
       AdminPasswordSalt = #{adminpasswordsalt,jdbcType=NVARCHAR},
@@ -40,8 +50,13 @@
     from Admin_Administrator
   </select>
   <select id="selectByName" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select AdminID, RoleID, AdminAccount, AdminPassword, AdminPasswordSalt, CreateTime
-    from Admin_Administrator
-    where AdminAccount = #{adminaccount,jdbcType=NVARCHAR}
-  </select>
+	select admin.AdminID, admin.AdminAccount, admin.AdminPassword,
+	admin.AdminPasswordSalt,
+	admin.CreateTime,adminrole.RoleID,adminrole.RoleName,adminrole.CreateTime
+	as rCreateTime
+	from Admin_Administrator admin left join Admin_Role
+	adminrole
+	on adminrole.RoleID = admin.RoleID where admin.AdminAccount =
+	#{adminaccount,jdbcType=NVARCHAR}
+</select>
 </mapper>

@@ -6,7 +6,7 @@ import java.util.Date;
 public class AdminAdministrator implements Serializable {
     private Integer adminid;
 
-    private Integer roleid;
+    private AdminRole adminRole;
 
     private String adminaccount;
 
@@ -26,15 +26,15 @@ public class AdminAdministrator implements Serializable {
         this.adminid = adminid;
     }
 
-    public Integer getRoleid() {
-        return roleid;
-    }
+	public AdminRole getAdminRole() {
+		return adminRole;
+	}
 
-    public void setRoleid(Integer roleid) {
-        this.roleid = roleid;
-    }
+	public void setAdminRole(AdminRole adminRole) {
+		this.adminRole = adminRole;
+	}
 
-    public String getAdminaccount() {
+	public String getAdminaccount() {
         return adminaccount;
     }
 

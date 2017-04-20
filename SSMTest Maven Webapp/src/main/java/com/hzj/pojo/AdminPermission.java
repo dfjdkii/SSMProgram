@@ -2,6 +2,7 @@ package com.hzj.pojo;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 public class AdminPermission implements Serializable {
     private Integer permissionid;
@@ -10,6 +11,7 @@ public class AdminPermission implements Serializable {
 
     private Date createtime;
 
+    private List<AdminRole> Roles;
     private static final long serialVersionUID = 1L;
 
     public Integer getPermissionid() {
@@ -35,4 +37,13 @@ public class AdminPermission implements Serializable {
     public void setCreatetime(Date createtime) {
         this.createtime = createtime;
     }
+
+	public List<AdminRole> getRoles() {
+		return Roles;
+	}
+
+	public void setRoles(List<AdminRole> roles) {
+		Roles = roles;
+	}
+    
 }

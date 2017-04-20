@@ -6,14 +6,26 @@
     <result column="RoleName" jdbcType="NVARCHAR" property="rolename" />
     <result column="CreateTime" jdbcType="TIMESTAMP" property="createtime" />
   </resultMap>
+    
+  <resultMap id="ExtendResultMap" type="com.hzj.pojo.AdminRole" extends="BaseResultMap"> 
+    <collection property="Permissions" ofType="com.hzj.pojo.AdminPermission">
+       <id column="PermissionID" jdbcType="INTEGER" property="permissionid" />
+       <result column="PermissionName" jdbcType="NVARCHAR" property="permissionname" />
+       <result column="pCreateTime" jdbcType="TIMESTAMP" property="createtime" /> 
+    </collection>
+  </resultMap>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from Admin_Role
     where RoleID = #{roleid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.hzj.pojo.AdminRole">
-    insert into Admin_Role (RoleID, RoleName, CreateTime
+    <selectKey keyProperty="roleid" resultType="int" order="BEFORE">
+	select max(RoleID)+1 from Admin_Role
+    </selectKey>
+    insert into Admin_Role (RoleID, RoleName
       )
-    values (#{roleid,jdbcType=INTEGER}, #{rolename,jdbcType=NVARCHAR}, #{createtime,jdbcType=TIMESTAMP}
+    values (#{roleid,jdbcType=INTEGER}, #{rolename,jdbcType=NVARCHAR}
       )
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.hzj.pojo.AdminRole">
@@ -30,5 +42,14 @@
   <select id="selectAll" resultMap="BaseResultMap">
     select RoleID, RoleName, CreateTime
     from Admin_Role
+  </select>
+  <!-- 根据角色id获取权限集合 -->
+  <select id="selectPermissionsByroleID" parameterType="java.lang.Integer" resultMap="ExtendResultMap">
+	select r.*,p.PermissionID,p.PermissionName,p.CreateTime as pCreateTime
+	from Admin_Role r left join Admin_RoleAndPermission rap on
+	r.RoleID =
+	rap.RoleID left join Admin_Permission p on rap.PermissionID
+	=
+	p.PermissionID where r.RoleID = #{roleid,jdbcType=INTEGER} 
   </select>
 </mapper>

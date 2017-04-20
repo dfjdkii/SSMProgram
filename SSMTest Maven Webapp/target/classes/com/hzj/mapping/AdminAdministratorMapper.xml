@@ -23,12 +23,11 @@
 	select max(AdminID)+1 from Admin_Administrator
     </selectKey>
 	insert into Admin_Administrator (AdminID, RoleID, AdminAccount,
-	AdminPassword, AdminPasswordSalt, CreateTime
+	AdminPassword, AdminPasswordSalt
 	)
 	values (#{adminid,jdbcType=INTEGER}, #{adminRole.roleid,jdbcType=INTEGER},
 	#{adminaccount,jdbcType=NVARCHAR},
-	#{adminpassword,jdbcType=NVARCHAR}, #{adminpasswordsalt,jdbcType=NVARCHAR},
-	#{createtime,jdbcType=TIMESTAMP}
+	#{adminpassword,jdbcType=NVARCHAR}, #{adminpasswordsalt,jdbcType=NVARCHAR}
 	)
 	</insert>
   <update id="updateByPrimaryKey" parameterType="com.hzj.pojo.AdminAdministrator">
@@ -46,8 +45,13 @@
     where AdminID = #{adminid,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    select AdminID, RoleID, AdminAccount, AdminPassword, AdminPasswordSalt, CreateTime
-    from Admin_Administrator
+    select admin.AdminID, admin.AdminAccount, admin.AdminPassword,
+	admin.AdminPasswordSalt,
+	admin.CreateTime,adminrole.RoleID,adminrole.RoleName,adminrole.CreateTime
+	as rCreateTime
+	from Admin_Administrator admin left join Admin_Role
+	adminrole
+	on adminrole.RoleID = admin.RoleID
   </select>
   <select id="selectByName" parameterType="java.lang.String" resultMap="BaseResultMap">
 	select admin.AdminID, admin.AdminAccount, admin.AdminPassword,

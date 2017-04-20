@@ -6,14 +6,26 @@
     <result column="PermissionName" jdbcType="NVARCHAR" property="permissionname" />
     <result column="CreateTime" jdbcType="TIMESTAMP" property="createtime" />
   </resultMap>
+  
+  <resultMap id="ExtendResultMap" type="com.hzj.pojo.AdminPermission" extends="BaseResultMap">
+    <collection property="Roles" ofType="com.hzj.pojo.AdminRole">
+       <id column="RoleID" jdbcType="INTEGER" property="roleid" />
+       <result column="RoleName" jdbcType="NVARCHAR" property="rolename" />
+       <result column="rCreateTime" jdbcType="TIMESTAMP" property="createtime" />  
+    </collection>
+  </resultMap>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from Admin_Permission
     where PermissionID = #{permissionid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.hzj.pojo.AdminPermission">
-    insert into Admin_Permission (PermissionID, PermissionName, CreateTime
+    <selectKey keyProperty="permissionid" resultType="int" order="BEFORE">
+	select max(PermissionID)+1 from Admin_Permission
+    </selectKey>
+    insert into Admin_Permission (PermissionID, PermissionName
       )
-    values (#{permissionid,jdbcType=INTEGER}, #{permissionname,jdbcType=NVARCHAR}, #{createtime,jdbcType=TIMESTAMP}
+    values (#{permissionid,jdbcType=INTEGER}, #{permissionname,jdbcType=NVARCHAR}
       )
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.hzj.pojo.AdminPermission">
@@ -30,5 +42,14 @@
   <select id="selectAll" resultMap="BaseResultMap">
     select PermissionID, PermissionName, CreateTime
     from Admin_Permission
+  </select>
+  <!-- 根据权限id获取角色集合 -->
+  <select id="selectRolesByPermissionID" parameterType="java.lang.Integer" resultMap="ExtendResultMap">
+	select p.*,r.RoleID,r.RoleName,r.CreateTime as rCreateTime
+	from Admin_Role r left join Admin_RoleAndPermission rap on
+	r.RoleID =
+	rap.RoleID left join Admin_Permission p on rap.PermissionID
+	=
+	p.PermissionID where p.PermissionID = #{permissionid,jdbcType=INTEGER} 
   </select>
 </mapper>

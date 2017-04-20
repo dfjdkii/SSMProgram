@@ -7,8 +7,9 @@
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="map">
     delete from Admin_RoleAndPermission
-    where RoleID = #{roleid,jdbcType=INTEGER}
-      and PermissionID = #{permissionid,jdbcType=INTEGER}
+    where
+    <if test="roleid!=0">RoleID = #{roleid,jdbcType=INTEGER}</if>
+    <if test="permissionid!=0"> and PermissionID = #{permissionid,jdbcType=INTEGER}</if>
   </delete>
   <insert id="insert" parameterType="com.hzj.pojo.AdminRoleandpermission">
     insert into Admin_RoleAndPermission (RoleID, PermissionID)

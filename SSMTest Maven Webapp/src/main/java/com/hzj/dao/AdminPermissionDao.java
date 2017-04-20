@@ -13,4 +13,6 @@ public interface AdminPermissionDao {
     List<AdminPermission> selectAll();
 
     int updateByPrimaryKey(AdminPermission record);
+    
+    AdminPermission selectRolesByPermissionID(Integer permissionid);
 }

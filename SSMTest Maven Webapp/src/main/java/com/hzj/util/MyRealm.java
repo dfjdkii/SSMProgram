@@ -40,7 +40,7 @@ public class MyRealm extends AuthorizingRealm {
 		/*获取用户的角色与权限并放进集合中*/
 		AdminAdministrator adminAdministrator = adminService.selectByName(userName);
 		roleSet.add(adminAdministrator.getAdminRole().getRolename());
-		AdminRole adminRole = adminService.getAdminRole(adminAdministrator.getAdminRole().getRoleid());
+		AdminRole adminRole = adminService.selectPermissionsByroleID(adminAdministrator.getAdminRole().getRoleid());
 		for(AdminPermission p:adminRole.getPermissions()){
 			permissionSet.add(p.getPermissionname());
 		}

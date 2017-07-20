@@ -39,8 +39,8 @@ public class TestSM {
 		 /*List<AdminAdministrator> adminList = adminService.selectAllAdList();
 		 logger.info(JSON.toJSONString(adminList));*/
 		 /*根据名称查询*/
-		 /*AdminAdministrator administrator=adminService.selectByName("dfjdkii");
-		 logger.info(JSON.toJSONString(administrator));*/
+		 AdminAdministrator administrator=adminService.selectByName("dfjdkii");
+		 logger.info(JSON.toJSONString(administrator));
 		 /*插入*/
 		 /*AdminAdministrator adminAdministrator=new AdminAdministrator();
 		 adminAdministrator.setAdminaccount("dfjdkkk");
@@ -87,12 +87,12 @@ public class TestSM {
 		 }
 		 System.out.print(i);*/
 		 /*删除角色同时删除权限*/
-		 AdminRole role = adminService.getAdminRole(3);
+		 /*AdminRole role = adminService.getAdminRole(3);
 		 int i = adminService.deleteRoleandPermission(role.getRoleid(), 0);
 		 if(i!=0){
 			 i = adminService.deleteRole(role.getRoleid());
 		 }
-		 System.out.print(i);
+		 System.out.print(i);*/
 		 /*插入权限同时定义角色*/
 		 
 		 

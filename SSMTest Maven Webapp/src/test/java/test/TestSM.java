@@ -39,8 +39,8 @@ public class TestSM {
 		 /*List<AdminAdministrator> adminList = adminService.selectAllAdList();
 		 logger.info(JSON.toJSONString(adminList));*/
 		 /*根据名称查询*/
-		 AdminAdministrator administrator=adminService.selectByName("dfjdkii");
-		 logger.info(JSON.toJSONString(administrator));
+		 /*AdminAdministrator administrator=adminService.selectByName("dfjdkii");
+		 logger.info(JSON.toJSONString(administrator));*/
 		 /*插入*/
 		 /*AdminAdministrator adminAdministrator=new AdminAdministrator();
 		 adminAdministrator.setAdminaccount("dfjdkkk");
@@ -65,8 +65,8 @@ public class TestSM {
 		 /*AdminRole role = adminService.selectPermissionsByroleID(1);
 		 logger.info(JSON.toJSONString(role));*/
 		 /*根据权限id获取所有角色集合*/
-		 /*AdminPermission permission = adminService.selectRolesByPermissionID(1);
-		 logger.info(JSON.toJSONString(permission));*/
+		 AdminPermission permission = adminService.selectRolesByPermissionID(1);
+		 logger.info(JSON.toJSONString(permission));
 		 /*插入角色同时定义权限*/
 		 /*AdminRole role = new AdminRole();
 		 role.setRolename("自定义角色1");

@@ -8,23 +8,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
     
-    <title>正在回到首页</title>
+    <title></title>
     
   </head>
   
-  <script type="text/javascript">
-     var errormsg = <%=request.getAttribute("error") %>
-     alert(errormsg);
-  
-  
-  
-  </script>
   <body>
-  <%-- ${error} --%>
-     <%
-     /* String error=request.getParameter("error"); */
-     /* response.sendRedirect("../login.html"); */
-     request.getRequestDispatcher("../../login.html").forward(request, response);
-      %> 
+  <script type="text/javascript">
+    alert("<%=request.getAttribute("error")%>");
+    window.location.href="../login.html";
+  </script>
   </body>
 </html>
